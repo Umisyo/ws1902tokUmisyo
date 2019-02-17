@@ -64,7 +64,7 @@ function parseCoordinates(str) {
  */
 async function main() {
     // 地図を初期化
-    const map = new Y.Map('map');
+    let map = new Y.Map('map');
     drawMap(map, { lat: 35.68227528, lng: 139.73310240 });
     // コントロールの追加
     const sliderZoomControl = new Y.SliderZoomControlVertical();
@@ -84,9 +84,9 @@ async function main() {
                 resultText.textContent = `場所: ${first.Name}, 緯度: ${lct.lat}, 経度: ${lct.lng}`;
                 // 地図を移動してラベル追加
                 drawMap(map, lct);
-                var result_str = "緯度" + String(lct.lat) + "\n経度" + String(lct.lng);
+                var result_str = '緯度' + String(lct.lat) + '\n経度' + String(lct.lng);
 
-                var marker = new Y.Marker(new Y.LatLng(lct.lat, lct.lng));
+                const marker = new Y.Marker(new Y.LatLng(lct.lat, lct.lng));
                 const label = new Y.Label(new Y.LatLng(lct.lat, lct.lng), result_str);
 
                 map.addFeature(label);
