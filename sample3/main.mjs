@@ -84,8 +84,13 @@ async function main() {
                 resultText.textContent = `場所: ${first.Name}, 緯度: ${lct.lat}, 経度: ${lct.lng}`;
                 // 地図を移動してラベル追加
                 drawMap(map, lct);
-                const label = new Y.Label(new Y.LatLng(lct.lat, lct.lng), first.Name);
+                var result_str = "緯度" + String(lct.lat) + "\n経度" + String(lct.lng);
+
+                var marker = new Y.Marker(new Y.LatLng(lct.lat, lct.lng));
+                const label = new Y.Label(new Y.LatLng(lct.lat, lct.lng), result_str);
+
                 map.addFeature(label);
+                map.addFeature(marker);
             } else {
                 resultText.textContent = '正しい住所を入力してください';
             }
